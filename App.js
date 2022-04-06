@@ -15,7 +15,7 @@ import {
 const App = () => {
   return (
     <View>
-      <Text>This is a starter template</Text>
+      <Text>Hello world</Text>
     </View>
   );
 };
