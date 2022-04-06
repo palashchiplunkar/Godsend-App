@@ -11,11 +11,10 @@ import {
 } from 'react-native';
 
 
-
 const App = () => {
   return (
     <View>
-      <Text>Hello world This is a template for starting</Text>
+      <Text>Hello world ,This is a template for starting your app</Text>
     </View>
   );
 };
