@@ -3,50 +3,38 @@ import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
-
-
-
-
-const LoginScreen=()=>{
+const LoginScreen=({navigation})=>{
     return (
         <SafeAreaView style={styles.container}>
             <View style={{marginHorizontal:25}}>
             <View style={{alignItems:'center',marginBottom:40}}>
-            <Image
-            style={styles.image}
-            source={require(`./assets/images/login.png`)}
-            />
             </View>
-            <Text style={{fontSize:28,fontWeight:'500',color:'#333',marginBottom:30}}>Login</Text>
+            <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30,marginTop:80}}>Login</Text>
             <View style={styles.textinput}>
                 <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Mobile No" style={{ flex:1,paddingVertical:0}} keyboardType="numeric"/>
+                <TextInput placeholder="Enter Mobile No" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
             </View>
-            {/* <View style={styles.textinput}>
-                <Ionicons name='ios-lock-closed-outline' size={20} color='white' style={{marginRight:5}}/>
-                <TextInput placeholder="password" style={{ flex:1,paddingVertical:0}} 
-                secureTextEntry={true}/>
-                <TouchableOpacity  onPress={()=>{} }>
-                  <Text style={{color:'white',fontWeight:'500'}}>Forget?</Text>
-    
-                </TouchableOpacity>
-            </View> */}
-            <Text style={styles.signup}>if not Registered?</Text>
-            <View  style={{flexDirection:'row',justifyContent:'space-between'}}>
-            <TouchableOpacity onPress={()=>{}} 
-            style={styles.loginbutton}>
+            <View style={styles.textinput}>
+                <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5}}/>
+                <TextInput placeholder="Enter Full Name" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
+            </View>
+           
+            <TouchableOpacity 
+            style={styles.loginbutton}
+            onPress={()=> navigation.navigate('Otp')} >
               <Text style={styles.login}>SEND OTP</Text>
             </TouchableOpacity>
-    
-            <TouchableOpacity onPress={()=>{}} 
-            style={styles.Registerbutton}>
+            <View  style={{flexDirection:'row',justifyContent:'center'}}>
+            <Text style={styles.signup}>if not Registered?</Text>
+            <TouchableOpacity  style={styles.Registerbutton}
+            onPress={()=> navigation.navigate('Register')} 
+            >
               <Text style={styles.login}>Register</Text>
             </TouchableOpacity>
     
             </View>
         
-            <Text style={styles.logwith}>or login with....</Text>
+            <Text style={styles.logwith}>or Connect with....</Text>
             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
             <TouchableOpacity 
             onPress={()=>{}}
@@ -93,28 +81,29 @@ const styles = StyleSheet.create({
     container: {
       flex:1,
       justifyContent:'center',
-      backgroundColor:'#055E98'
+      backgroundColor:'#055E98',
+      
     },
     image:{width:225,
       height:225,
       transform:[{rotate:'-15deg'}],
     },
     textinput:{
-    flexDirection:'row',
-    paddingTop:5,
-    paddingLeft:3,
+      flexDirection:'row',
+      paddingTop:10,
+      paddingLeft:3,
     //borderBottomColor:'#ccc',
     borderBottomWidth:1,
-    paddingBottom:10,
+    paddingBottom:15,
     backgroundColor:'white',
     borderRadius:10,
-    marginBottom:25,
-    
+    marginBottom:25
   },
     login:{textAlign:'center',
     fontWeight:'500',
     fontSize:16,
-    color:'white'
+    color:'white',
+    
   },
   gicon:{borderColor:'#ddd',
   borderWidth:2,
@@ -131,16 +120,18 @@ const styles = StyleSheet.create({
   marginBottom:20,
   },
   Registerbutton:{
-    backgroundColor:'#AD48AF',
-    padding:20,
-    borderRadius:10,
-    marginLeft:60,
-    paddingHorizontal:50,
+    //backgroundColor:'#AD48AF',
+    //padding:20,
+    //borderRadius:10,
+    marginLeft:10,
+    //paddingHorizontal:50,
     marginBottom:20,
+    
     
     },
   signup: {
   textAlign:'right',
+  
   color:'white',
   marginBottom:5,
   },
@@ -148,8 +139,5 @@ const styles = StyleSheet.create({
     textAlign:'center',
     color:'white',
     marginBottom:30},
-  
-  
-  
   
   });

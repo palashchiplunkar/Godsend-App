@@ -6,45 +6,15 @@
  * @flow strict-local
  */
 
-<<<<<<< HEAD
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.loginContainer}>
-        <Text style={styles.login}>Login</Text>
-      </View>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#1a424d',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loginContainer: {
-    backgroundColor: 'white',
-    width: '75%',
-    height: '50%',
-    borderRadius: 20,
-  },
-  login: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-});
-
-export default App;
-=======
  import React from 'react';
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
  import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
  import LoginScreen from './screens/LoginScreen'; 
+ import OtpScreen from './screens/Otp'
+import RegisterScreen from './screens/RegisterScreen'; 
+
+ 
  
  
  import {SafeAreaView,StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
@@ -64,6 +34,20 @@ export default App;
           },
            headerBackVisible:false
           }}/>
+           <Stack.Screen name="Register" component={RegisterScreen} options={{
+          title: "GODSEND",
+          headerTitleStyle:{
+          fontWeight:'bold',
+          },
+           headerBackVisible:false
+          }} />
+          <Stack.Screen name="Otp" component={OtpScreen} options={{
+          title: "GODSEND",
+          headerTitleStyle:{
+          fontWeight:'bold',
+          },
+           headerBackVisible:false
+          }} />
        </Stack.Navigator>
      </NavigationContainer>
    );
@@ -131,4 +115,3 @@ export default App;
   }
 });
  
->>>>>>> 8b8ee1d1cc0e0eecd6878110983be4d52a6063be
