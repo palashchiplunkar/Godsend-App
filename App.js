@@ -13,6 +13,7 @@
  import LoginScreen from './screens/LoginScreen'; 
  import OtpScreen from './screens/Otp'
 import RegisterScreen from './screens/RegisterScreen'; 
+import HomeScreen from './screens/HomeScreen'
 
  
  
@@ -42,6 +43,13 @@ import RegisterScreen from './screens/RegisterScreen';
            headerBackVisible:false
           }} />
           <Stack.Screen name="Otp" component={OtpScreen} options={{
+          title: "GODSEND",
+          headerTitleStyle:{
+          fontWeight:'bold',
+          },
+           headerBackVisible:false
+          }} />
+           <Stack.Screen name="Home" component={HomeScreen} options={{
           title: "GODSEND",
           headerTitleStyle:{
           fontWeight:'bold',

@@ -5,26 +5,26 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 const OtpScreen=({navigation})=>{
-    return (
-        <SafeAreaView style={styles.container}>
-            <View style={{marginHorizontal:25}}>
-          
-            <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30}}>Enter OTP</Text>
-            
-            <TouchableOpacity 
-            onPress={()=>navigation.navigate('')}
-            style={styles.submitbutton}>
-            <Text style={styles.submit}>Submit</Text>
-            {/* <CustomIcon name='' size={25} />  */}
-            <MaterialsIcons name="login" size={25} color="#fff"/>
-            </TouchableOpacity>
+  return (
+    <SafeAreaView style={styles.container}>
+        <View style={{marginHorizontal:25}}>
       
-            
+        <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30}}>Enter OTP</Text>
+        
+        <TouchableOpacity 
+        onPress={()=>navigation.navigate('Home')}
+        style={styles.submitbutton}>
+        <Text style={styles.submit}>Submit</Text>
+        {/* <CustomIcon name='' size={25} />  */}
+        <MaterialsIcons name="login" size={25} color="#fff"/>
+        </TouchableOpacity>
+  
+        
 
 
-            </View>
-        </SafeAreaView>
-      );
+        </View>
+    </SafeAreaView>
+  );
   
 }
 
