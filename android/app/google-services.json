@@ -1,0 +1,39 @@
+{
+    "project_info": {
+      "project_number": "49565510652",
+      "project_id": "godsendapp-a95d4",
+      "storage_bucket": "godsendapp-a95d4.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:49565510652:android:fb3c150b5e431a4d6de079",
+          "android_client_info": {
+            "package_name": "com.godsend_app"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "49565510652-v3qnbnu28qj7t2altucr57qnl3t0j6ui.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBUedx1NJaiAT0fweRKrls3lUdts9t_h5o"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "49565510652-v3qnbnu28qj7t2altucr57qnl3t0j6ui.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

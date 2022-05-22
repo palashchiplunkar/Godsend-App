@@ -1,12 +1,19 @@
 import React from 'react';
 import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from 'react-native';
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const RegisterScreen=({navigation})=>{
+
+const[inputTextValue,setInputTextValue]=useState(null);
+
+
+
+
     return (
         <SafeAreaView style={styles.container}>
+            {/* <StatusBar hidden={true}/> */}
             <View style={{marginHorizontal:25}}>
             <View style={{alignItems:'center',marginBottom:40}}>
           
@@ -14,7 +21,13 @@ const RegisterScreen=({navigation})=>{
             <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30,marginTop:100}}>Register</Text>
             <View style={styles.textinput}>
                 <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Full Name" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
+                <TextInput 
+                placeholder="Enter Full Name" 
+                style={{ flex:1,paddingVertical:0}} 
+                keyboardType="default"
+                value={inputTextValue}
+                onChangeText={value => setInputTextValue(value) }
+                />
                 
             </View>
             <View style={styles.textinput}>

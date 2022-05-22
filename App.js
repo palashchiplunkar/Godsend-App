@@ -14,15 +14,17 @@
  import OtpScreen from './screens/Otp'
 import RegisterScreen from './screens/RegisterScreen'; 
 import HomeScreen from './screens/HomeScreen'
+import database from '@react-native-firebase/database';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
  
  
- 
  import {SafeAreaView,StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
- 
- 
+
  const Stack = createNativeStackNavigator();
  const App=()=>{
+  
    return(
      <NavigationContainer style={{color:'#055E98'}}>
        <Stack.Navigator>
@@ -62,7 +64,8 @@ import HomeScreen from './screens/HomeScreen'
  
  }
  
- 
+
+
  const Main=({navigation})=> {
    return (
      <SafeAreaView style={styles.maincontainer}>

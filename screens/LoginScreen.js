@@ -2,8 +2,25 @@ import React from 'react';
 import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from 'react-native';
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import database from '@react-native-firebase/database';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const LoginScreen=({navigation})=>{
+   const [mydata,setMyData]=useState(null);
+   useEffect(()=>{
+     getDatabase();
+   },[]);
+ 
+   const getDatabase=async()=>{
+ try{
+ const data=await database().ref('user').once('value');
+ console.log(data)
+ setMyData(data.val())
+ }catch (err){
+  console.log(err);
+ }
+   };
     return (
         <SafeAreaView style={styles.container}>
             <View style={{marginHorizontal:25}}>
