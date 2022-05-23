@@ -3,12 +3,22 @@ import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import database from '@react-native-firebase/database';
+import auth from '@react-native-firebase/auth';
 const RegisterScreen=({navigation})=>{
 
-const[inputTextValue,setInputTextValue]=useState(null);
+const[fullName,setFullName]=useState('');
+const[number,setNumber]=useState('');
+const[vehileNumber,setvehicleNumber]=useState('');
 
 
+const GetOTP = () => {
+  if(number && number.length > 9){
+  navigation.navigate('Otp', {number});
+  }
+  else
+  alert("Please enter 10 digit phone number");
+}
 
 
     return (
@@ -25,27 +35,40 @@ const[inputTextValue,setInputTextValue]=useState(null);
                 placeholder="Enter Full Name" 
                 style={{ flex:1,paddingVertical:0}} 
                 keyboardType="default"
-                value={inputTextValue}
-                onChangeText={value => setInputTextValue(value) }
+                value={fullName}
+                onChangeText={value => setFullName(value) }
                 />
                 
             </View>
             <View style={styles.textinput}>
                 <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Mobile No" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
-                
+                <TextInput placeholder="Enter Mobile No"
+                 style={{ flex:1,paddingVertical:0}}
+                 keyboardType="number-pad"
+                 value={number}
+                 onChangeText={(value) => setNumber(value)}
+                 maxLength={10}
+                />
             </View>
             <View style={styles.textinput}>
                 <MaterialsIcons name='commute' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Vehicle No" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
+                <TextInput placeholder="Enter Mobile No"
+                 style={{ flex:1,paddingVertical:0}}
+                  keyboardType="default"
+                  value={vehileNumber}
+                  onChangeText={value => setvehicleNumber(value) }
+                  />
                 
             </View>
             
             
-            <TouchableOpacity onPress={()=>{}} 
-            style={styles.Registerbutton}>
+            <TouchableOpacity 
+            onPress={GetOTP}
+
+              style={styles.Registerbutton}>
               <Text style={styles.login}>Register</Text>
             </TouchableOpacity>
+
             <View  style={{flexDirection:'row',justifyContent:'center'}}>
               <Text style={styles.signup}>Already Registered</Text>
               <MaterialsIcons name='login' size={20} color='black' />
