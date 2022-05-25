@@ -10,6 +10,8 @@ import Recentitem from '../Components/Recentitem';
 import CustomSwitch from '../Components/CustomSwitch';
 import { recentcontact } from '../model/data';
 import { contact } from '../model/data';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 
 
@@ -29,8 +31,10 @@ const HomeScreen=({navigation})=>{
             <ScrollView style={{padding:20}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:5}}>
                 <Text style={{fontSize:16,fontFamily:'Robot-Medium',color:'white'}}>Hello Palash</Text>
-                <TouchableOpacity onPress={()=>navigation.goBack()} >
-                    <ImageBackground source={require('../assets/images/profileimg.png')} style={{width:35,height:35}} imageStyle={{borderRadius:25}}/>
+                <TouchableOpacity onPress={()=>navigation.openDrawer()} >
+                    <Ionicons name="menu-outline" size={22} color="white"/>
+                    {/* <MaterialIcons name="menu" fontSize={50} color="white"/> */}
+                    {/* <ImageBackground source={require('../assets/images/profileimg.png')} style={{width:35,height:35}} imageStyle={{borderRadius:25}}/> */}
                 </TouchableOpacity>
                
                 </View>

@@ -7,6 +7,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const LoginScreen=({navigation})=>{
+
+  const[number,setNumber]=useState('');
+  const[fullName,setFullName]=useState('');
    const [mydata,setMyData]=useState(null);
    useEffect(()=>{
      getDatabase();
@@ -21,6 +24,14 @@ const LoginScreen=({navigation})=>{
   console.log(err);
  }
    };
+
+   const GetOTP = () => {
+    if(number && number.length > 9){
+    navigation.navigate('Otp', {number});
+    }
+    else
+    alert("Please enter 10 digit phone number");
+  }
     return (
         <SafeAreaView style={styles.container}>
             <View style={{marginHorizontal:25}}>
@@ -29,16 +40,30 @@ const LoginScreen=({navigation})=>{
             <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30,marginTop:80}}>Login</Text>
             <View style={styles.textinput}>
                 <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Mobile No" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
+                <TextInput placeholder="Enter Mobile No"
+                 style={{ flex:1,paddingVertical:0}}
+                 keyboardType="number-pad"
+                 value={number}
+                 onChangeText={(value) => setNumber(value)}
+                 maxLength={10}
+                />
+                {/* <TextInput placeholder="Enter Mobile No" style={{ flex:1,paddingVertical:0}} keyboardType="default"/> */}
             </View>
             <View style={styles.textinput}>
                 <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Full Name" style={{ flex:1,paddingVertical:0}} keyboardType="default"/>
+                <TextInput 
+                placeholder="Enter Full Name" 
+                style={{ flex:1,paddingVertical:0}} 
+                keyboardType="default"
+                value={fullName}
+                onChangeText={value => setFullName(value) }
+                />
+                {/* <TextInput placeholder="Enter Full Name" style={{ flex:1,paddingVertical:0}} keyboardType="default"/> */}
             </View>
            
             <TouchableOpacity 
             style={styles.loginbutton}
-            onPress={()=> navigation.navigate('Otp')} >
+            onPress={GetOTP} >
               <Text style={styles.login}>SEND OTP</Text>
             </TouchableOpacity>
             <View  style={{flexDirection:'row',justifyContent:'center'}}>

@@ -52,7 +52,7 @@ const GetOTP = () => {
             </View>
             <View style={styles.textinput}>
                 <MaterialsIcons name='commute' size={20} color='black' style={{marginRight:5}}/>
-                <TextInput placeholder="Enter Mobile No"
+                <TextInput placeholder="Enter Vehicle No"
                  style={{ flex:1,paddingVertical:0}}
                   keyboardType="default"
                   value={vehileNumber}
