@@ -55,6 +55,7 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
          maxLength={6}
       />
         <TouchableOpacity 
+        //  onPress={()=>navigation.navigate('Home')}
         onPress={confirmCode}
       //  onPress={() => confirmCode()}
         style={styles.submitbutton}>

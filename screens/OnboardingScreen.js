@@ -1,32 +1,54 @@
 
 import React from 'react';
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import * as Animatable from 'react-native-animatable';
 //import LoginScreen from '../screens/LoginScreen'; 
 // import RegisterScreen from './screens/RegisterScreen'; 
 //import OtpScreen from './screens/Otp'
 // import HomeScreen from './screens/HomeScreen';
 
-import {SafeAreaView,Text,View,Image,StyleSheet, TouchableOpacity} from 'react-native';
+import {SafeAreaView,Text,View,Image,StyleSheet, TouchableOpacity,Dimensions} from 'react-native';
 
 
 const OnboardingScreen=({navigation})=> {
     return (
       <SafeAreaView style={styles.maincontainer}>
         
-        <View style={styles.view1}>
-        <Image
-          style={{width:300,height:300,}}
-          source={require(`../assets/godsend.png`)}
-        />
-        <Text style={styles.view2}>GODSEND</Text>
+        <View style={styles.header}>
+            {/* <Animatable.Image 
+                animation="bounceIn"
+                duraton="1500"
+            source={require('../assets/logo.png')}
+            style={styles.logo}
+            resizeMode="stretch"
+            /> */}
+            <Animatable.View style={styles.view1} animation="bounceIn">
+              <Image
+            style={{width:height_logo,height:height_logo, resizeMode: 'cover', borderWidth: 2,
+            borderRadius: 75,}}
+            source={require(`../assets/godsend.png`)}
+            resizeMode="stretch"
+            />
+              <Text  style={styles.view2}>GODSEND</Text>
+            </Animatable.View>
         </View>
-        <TouchableOpacity 
-        onPress={()=>navigation.navigate('Login')}
-        style={styles.beginbutton}>
-          <Text style={styles.begin}>Lets Begin</Text>
+
+        <Animatable.View  
+        animation="fadeInUpBig"
+        style={styles.footer}>
+          <Text style={styles.title} >Stay connected with Everyone</Text>
+          <Text style={styles.text}>Sign in With account</Text>
+          <TouchableOpacity 
+          onPress={()=>navigation.navigate('Login')}
+          style={styles.beginbutton}>
+            <Text style={styles.begin}>Get Started</Text>
           {/* <CustomIcon name='' size={25} />  */}
-          <MaterialIcons name="arrow-forward-ios" fontSize={26} color="#fff"/>
-        </TouchableOpacity>
+            <MaterialIcons name="arrow-forward-ios" fontSize={26} color="#fff"/>
+          </TouchableOpacity>
+          </Animatable.View>
+        
+        
         
       </SafeAreaView>
       
@@ -35,6 +57,8 @@ const OnboardingScreen=({navigation})=> {
   };
 
   export default OnboardingScreen;
+  const {height}=Dimensions.get("screen");
+  const height_logo=height*0.28;
 
   const styles = StyleSheet.create({
     maincontainer: 
@@ -55,17 +79,46 @@ const OnboardingScreen=({navigation})=> {
     },
     beginbutton:
     {backgroundColor:'#ff3300',
-    width:'90%',
+    
     padding:20,
     borderRadius:5,
     flexDirection:'row',
     justifyContent:'space-between',
-    marginBottom:50
+    marginBottom:50,
+     marginTop:10
     },
     begin:{
     fontWeight:'bold',
     fontSize:15,
     color:'#fff',
     fontFamily:'Tapestry-Regular'
-    }
+    },
+    header: {
+      flex: 2,
+      justifyContent: 'center',
+      alignItems: 'center'
+  },
+  footer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingVertical: 50,
+    paddingHorizontal: 30,
+    width:'100%'
+},
+title: {
+  color: '#05375a',
+  fontSize: 30,
+  fontWeight: 'bold'
+},
+  logo: {
+      width: height_logo,
+      height: height_logo
+  },
+  text: {
+    color: 'grey',
+    marginTop:5,
+    fontWeight: 'bold'
+},
   });

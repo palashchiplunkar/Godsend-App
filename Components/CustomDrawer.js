@@ -1,10 +1,21 @@
 import React from 'react'
-import {View,Text,ImageBackground,Image,TouchableOpacity} from 'react-native'
+import {View,Text,ImageBackground,Image,TouchableOpacity,Switch,StyleSheet} from 'react-native'
 
-import { DrawerContentScrollView,DrawerItemList} from '@react-navigation/drawer';
+import { DrawerContentScrollView,DrawerItem,DrawerItemList} from '@react-navigation/drawer';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import LoginScreen from '../screens/LoginScreen'; 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { Drawer ,TouchableRipple} from 'react-native-paper';
+
+
+
+  
 const CustomDrawer=(props)=>{
+    const [isDarkTheme,setIsDarkTheme]=React.useState(false);
+    const toggleTheme=()=>{
+        setIsDarkTheme(!isDarkTheme);
+    }
     return (
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor:'#055E98'}}>
@@ -17,25 +28,92 @@ const CustomDrawer=(props)=>{
                 </View>
                 
             </DrawerContentScrollView>
-        <View style={{padding:20,borderTopWidth:1,borderTopColor:'#ccc'}}>
-            <TouchableOpacity onPress={()=>{}} style={{paddingVertical:15}}>
-                <View style={{flexDirection:'row',alignItems:'center',}}>
+            <Drawer.Section title='Prefernce' style={{borderTopWidth:1,borderTopColor:'#ccc',fontWeight:'bold'}}>
+            <TouchableRipple onPress={() => {toggleTheme()}}>
+                <View style={styles.preference}>
+                        <Text style={{fontWeight:'bold'}} imageStyle={{borderRadius:40}}>
+                            Dark Theme
+                        </Text>
+                        <View pointerEvents='none' style={{fontWeight:'bold'}}>
 
-                    <Ionicons name="share-social-outline" size={22} color="#333"/>
-                    <Text style={{fontSize:15,marginLeft:5,color:'#333'}}>Share</Text>
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{}} style={{paddingVertical:15}}>
-                <View style={{flexDirection:'row',alignItems:'center'}}>
-
-                    <Ionicons name="exit-outline" size={22} color="#333"/>
-                    <Text style={{fontSize:15,marginLeft:5,color:'#333'}}>Sign Out</Text>
-                </View>
-            </TouchableOpacity>
-        </View>
+                        <Switch value={isDarkTheme}/>
+                        </View>
+                    </View>
+                </TouchableRipple>
+            </Drawer.Section>
+            <Drawer.Section>
+                <View style={{borderTopWidth:1,borderTopColor:'#ccc'}}>
+                <DrawerItem 
+                    icon={({color,size})=>(
+                        <Ionicons name="share-social-outline" size={22} color="#333"/> 
+                    )}
+                    label="Share"
+                    style={{paddingVertical:10}}
+                    onPress={()=>{}}
+                />
+                <DrawerItem 
+                    icon={({color,size})=>(
+                        <Ionicons name="exit-outline" size={22} color="#333"/>
+                    )}
+                    label="Sign Out"
+                    onPress={() => {props.navigation.navigate('Login')}}
+                />
+                
+              
+            </View>
+            </Drawer.Section>
+           
+            
         </View>
         
     )
 }
 
+
 export default CustomDrawer
+const styles = StyleSheet.create({
+    drawerContent: {
+      flex: 1,
+    },
+    userInfoSection: {
+      paddingLeft: 20,
+    },
+    title: {
+      fontSize: 16,
+      marginTop: 3,
+      fontWeight: 'bold',
+    },
+    caption: {
+      fontSize: 14,
+      lineHeight: 14,
+    },
+    row: {
+      marginTop: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    section: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 15,
+    },
+    paragraph: {
+      fontWeight: 'bold',
+      marginRight: 3,
+    },
+    drawerSection: {
+      marginTop: 15,
+    },
+    bottomDrawerSection: {
+        marginBottom: 15,
+        borderTopColor: '#f4f4f4',
+        borderTopWidth: 1
+    },
+    preference: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingVertical: 12,
+      paddingHorizontal: 16,
+      fontWeight:'bold',
+    },
+  });

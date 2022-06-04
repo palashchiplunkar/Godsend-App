@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
-const RegisterScreen=({navigation})=>{
+const RegisterScreen=( )=>{
 
 const[fullName,setFullName]=useState('');
 const[number,setNumber]=useState('');
