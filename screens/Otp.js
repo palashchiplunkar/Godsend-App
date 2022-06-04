@@ -2,6 +2,7 @@ import React from 'react';
 import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from 'react-native';
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import auth from '@react-native-firebase/auth';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -17,7 +18,7 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
 
   async function signInWithPhoneNumber() {
    try{
-      const confirmation = await auth().signInWithPhoneNumber(number);
+      const confirmation = await auth().signInWithPhoneNumber('+91'+number);
       alert(JSON.stringify(confirmation));
     }catch(e){
      alert(JSON.stringify(e));
@@ -26,10 +27,11 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
 
   async function confirmCode() {
     try{
-    
-    const response = await confirm.confirm(code);
+    console.log(code);
+    const response = await confirm.confirm({code});
     if(response){
       navigation.navigate('HomeScreen');
+      
     }
     } catch(e){
       alert(JSON.stringify(e));
@@ -53,7 +55,7 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
          maxLength={6}
       />
         <TouchableOpacity 
-        onPress={()=>navigation.navigate('Home')}
+        onPress={confirmCode}
       //  onPress={() => confirmCode()}
         style={styles.submitbutton}>
         <Text style={styles.submit}>Submit</Text>
