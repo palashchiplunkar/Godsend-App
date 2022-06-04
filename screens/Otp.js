@@ -17,24 +17,25 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
   }, [])
 
   async function signInWithPhoneNumber() {
-   try{
-      const confirmation = await auth().signInWithPhoneNumber('+91'+number);
-      alert(JSON.stringify(confirmation));
-    }catch(e){
-     alert(JSON.stringify(e));
-   }
+    try{
+       const confirmation = await auth().signInWithPhoneNumber('+91'+number);
+       setConfirm(confirmation);
+       console.log(confirmation);
+     }catch(e){
+       console.log(e);
+    }
   }
 
   async function confirmCode() {
     try{
+     
     console.log(code);
-    const response = await confirm.confirm({code});
+    const response = await confirm.confirm(code);
     if(response){
-      navigation.navigate('HomeScreen');
+      navigation.navigate('Home');
       
-    }
-    } catch(e){
-      alert(JSON.stringify(e));
+    }} catch(e){
+      console.log(e);
     }
   }
   return (
