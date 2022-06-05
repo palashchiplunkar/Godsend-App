@@ -3,10 +3,11 @@ import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const OtpScreen = function ({ route: { params: { number } }, navigation }) {
+const OtpScreen = function ({ route: { params: { number,fullName,vehileNumber } }, navigation }) {
   const [code, setCode] = useState('');
   const [submittingOtp, setSubmittingOtp] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -14,6 +15,7 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
  
   useEffect(() => {
     signInWithPhoneNumber();
+    console.log("sending otp");
   }, [])
 
   async function signInWithPhoneNumber() {
@@ -29,9 +31,16 @@ const OtpScreen = function ({ route: { params: { number } }, navigation }) {
   async function confirmCode() {
     try{
      
-    console.log(code);
     const response = await confirm.confirm(code);
     if(response){
+      database()
+         .ref('/users')
+          .set({
+           name: {fullName},
+           phone:{number},
+           vehiclenumber:{vehileNumber}
+        })
+  .then(() => console.log('Data set.'));
       navigation.navigate('Home');
       
     }} catch(e){

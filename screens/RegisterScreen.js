@@ -14,7 +14,7 @@ const[vehileNumber,setvehicleNumber]=useState('');
 
 const GetOTP = () => {
   if(number && number.length > 9){
-  navigation.navigate('Otp', {number});
+  navigation.navigate('Otp', {number,fullName,vehileNumber});
   }
   else
   alert("Please enter 10 digit phone number");
