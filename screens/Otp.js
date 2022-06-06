@@ -36,11 +36,12 @@ const OtpScreen = function ({ route: { params: { number,fullName,vehileNumber } 
       database()
          .ref('/users')
           .set({
-           name: {fullName},
-           phone:{number},
-           vehiclenumber:{vehileNumber}
+           name: fullName,
+           phone:number,
+           vehiclenumber:vehileNumber
         })
   .then(() => console.log('Data set.'));
+  
       navigation.navigate('Home');
       
     }} catch(e){
