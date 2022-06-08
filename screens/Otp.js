@@ -62,7 +62,7 @@ const OtpScreen = function ({ route: { params: { number,fullName,vehileNumber } 
           placeholderTextColor="#fff" underlineColorAndroid={'transparent'}
           keyboardType="number-pad"
           value={code}
-         onChangeText={value => setCode(value)}
+         onChangeText={value => setCode(value)}  
          maxLength={6}
       />
         <TouchableOpacity 
