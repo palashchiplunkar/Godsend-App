@@ -7,20 +7,32 @@ import database from '@react-native-firebase/database';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const OtpScreen = function ({ route: { params: { number,fullName,vehileNumber } }, navigation }) {
+const OtpScreen = function ({ route: { params: mobile,name,vehicle }, navigation }) {
   const [code, setCode] = useState('');
   const [submittingOtp, setSubmittingOtp] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [confirm, setConfirm] = useState(null);
+  // { number,fullName,vehileNumber }
+  // const [data, setData] = React.useState({
+  //   mobile: ' ',
+  //   name:' ',
+  //   vehicle:'',
+  //   check_textInputChange:false,
+  //   isValidNumber:true,
+  //   isValidUser:true,
+  //   isValidVehicle:true
+    
+  // });
  
   useEffect(() => {
+    console.log(mobile)
     signInWithPhoneNumber();
     console.log("sending otp");
   }, [])
 
   async function signInWithPhoneNumber() {
     try{
-       const confirmation = await auth().signInWithPhoneNumber('+91'+number);
+       const confirmation = await auth().signInWithPhoneNumber('+91'+mobile);
        setConfirm(confirmation);
        console.log(confirmation);
      }catch(e){
@@ -36,9 +48,9 @@ const OtpScreen = function ({ route: { params: { number,fullName,vehileNumber } 
       database()
          .ref('/users')
           .set({
-           name: fullName,
-           phone:number,
-           vehiclenumber:vehileNumber
+           name: name,
+           phone:mobile,
+           vehiclenumber:vehicle
         })
   .then(() => console.log('Data set.'));
   
@@ -52,7 +64,7 @@ const OtpScreen = function ({ route: { params: { number,fullName,vehileNumber } 
     <SafeAreaView style={styles.container}>
         <View style={{marginHorizontal:25}}>
       
-        <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30}}>Enter OTP sent to your{' ' + number}</Text>
+        <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30}}>Enter the OTP sent to your{' ' + mobile}</Text>
         <TextInput
           style={{
               marginBottom: 20, color: '#fff', width: '100%',

@@ -24,7 +24,6 @@ const LoginScreen=({navigation})=>{
       setData({
         ...data,
         mobile:val,
-        name:val,
         check_textInputChange:true,
         isValidNumber:true,
 
@@ -34,7 +33,7 @@ const LoginScreen=({navigation})=>{
       setData({
         ...data,
         mobile:val,
-        name:val,
+        
         check_textInputChange:false,
         isValidNumber:false,
 
@@ -48,7 +47,6 @@ const LoginScreen=({navigation})=>{
     if(val.length >=3 && (userRe.test(data.name)) ) {
       setData({
         ...data,
-        mobile:val,
         name:val,
         check_nameChange:true,
         isValidUser:true
@@ -58,7 +56,6 @@ const LoginScreen=({navigation})=>{
     else{
       setData({
         ...data,
-        mobile:val,
         name:val,
         check_nameChange:false,
         isValidUser:false
@@ -86,7 +83,8 @@ const LoginScreen=({navigation})=>{
    };
 
    const GetOTP = () => {
-    if(data.isValidUser==true && data.isValidNumber==true){
+    if(data.isValidUser==true && data.isValidNumber==true && data.mobile.length !=1){
+      console.log(data.mobile)
     navigation.navigate('Otp', data.mobile ,data.name);
     alert("Varification code sent to your Registerd Number");
     }
@@ -119,7 +117,7 @@ const LoginScreen=({navigation})=>{
             <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30,marginTop:80}}>Login</Text>
             <View  style={styles.textinput1}>
             <View style={styles.textinput}>
-                <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5}}/>
+                <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5,marginTop:5}}/>
                 <TextInput placeholder="Enter Mobile No"
                  style={{ flex:1,paddingVertical:0}}
                  keyboardType="number-pad"
@@ -138,7 +136,7 @@ const LoginScreen=({navigation})=>{
               </View>
             <View  style={styles.textinput1}>
             <View style={styles.textinput}>
-                <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5}}/>
+                <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5,marginTop:5}}/>
                 <TextInput 
                 placeholder="Enter Full Name" 
                 style={{ flex:1,paddingVertical:0}} 
@@ -158,7 +156,7 @@ const LoginScreen=({navigation})=>{
            
             <TouchableOpacity 
             style={styles.loginbutton}
-            onPress={GetOTP} >
+            onPress={ GetOTP} >
               <Text style={styles.login}>SEND OTP</Text>
             </TouchableOpacity>
             <View  style={{flexDirection:'row',justifyContent:'center'}}>

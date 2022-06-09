@@ -38,8 +38,6 @@ const textInputChange =(val) =>{
     setData({
       ...data,
       mobile:val,
-      name:val,
-      vehicle:val,
       check_textInputChange:true,
       isValidNumber:true,
 
@@ -50,8 +48,6 @@ const textInputChange =(val) =>{
     setData({
       ...data,
       mobile:val,
-      name:val,
-      vehicle:val,
       check_textInputChange:false,
       isValidNumber:false,
 
@@ -64,8 +60,6 @@ const textVehicleChange =(val) =>{
   if(val.length >=10 && (vehicleRe.test(data.vehicle)) ) {
     setData({
       ...data,
-      mobile:val,
-      name:val,
       vehicle:val,
       check_textInputChange:true,
       isValidVehicle:true
@@ -76,8 +70,6 @@ const textVehicleChange =(val) =>{
   else{
     setData({
       ...data,
-      mobile:val,
-      name:val,
       vehicle:val,
       check_textInputChange:false,
       isValidVehicle:false
@@ -91,9 +83,7 @@ const nameChange =(val) =>{
   if(val.length >=3 && (userRe.test(data.name)) ) {
     setData({
       ...data,
-      mobile:val,
-      name:val,
-      vehicle:val,
+      name:val,  
       check_nameChange:true,
       isValidUser:true
 
@@ -103,9 +93,7 @@ const nameChange =(val) =>{
   else{
     setData({
       ...data,
-      mobile:val,
       name:val,
-      vehicle:val,
       check_nameChange:false,
       isValidUser:false
 
@@ -115,7 +103,8 @@ const nameChange =(val) =>{
  
 
  const GetOTP = () => {
-  if(data.isValidUser==true && data.isValidNumber==true &&data.isValidVehicle==true){
+  if(data.isValidUser==true && data.isValidNumber==true && data.mobile.length !=1) {
+    console.log(data.mobile)
   navigation.navigate('Otp', data.mobile ,data.name,data.vehicle);
   alert("Varification code sent to your Registerd Number");
   }
@@ -140,7 +129,7 @@ const nameChange =(val) =>{
             <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30,marginTop:100}}>Register</Text>
             <View  style={styles.textinput1}>
             <View style={styles.textinput}>
-                <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5}}/>
+                <MaterialsIcons name='person' size={20} color='black' style={{marginRight:5,marginTop:5}}/>
                 <TextInput placeholder="Enter Full Name" style={{ flex:1,paddingVertical:0}} keyboardType="default"
                 onChangeText={(val)=> nameChange(val)}
                 />
@@ -161,7 +150,7 @@ const nameChange =(val) =>{
              </View>
              <View  style={styles.textinput1}>
             <View style={styles.textinput}>
-                <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5}}/>
+                <MaterialsIcons name='phone' size={20} color='black' style={{marginRight:5,marginTop:5}}/>
                 {/* <TextInput placeholder="Enter Mobile No"
                  style={{ flex:1,paddingVertical:0}}
                  keyboardType="number-pad"
@@ -181,7 +170,7 @@ const nameChange =(val) =>{
             </View>
             <View  style={styles.textinput1}>
             <View style={styles.textinput}>
-                <MaterialsIcons name='commute' size={20} color='black' style={{marginRight:5}}/>
+                <MaterialsIcons name='commute' size={20} color='black' style={{marginRight:5,marginTop:5}}/>
                 {/* <TextInput placeholder="Enter Vehicle No"
                  style={{ flex:1,paddingVertical:0}}
                   keyboardType="default"
