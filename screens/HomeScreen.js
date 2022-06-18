@@ -1,5 +1,5 @@
 import React ,{useState}from 'react';
-import {View,Text,SafeAreaView,ScrollView,ImageBackground,TextInput,TouchableOpacity} from 'react-native';
+import {View,Text,SafeAreaView,ScrollView,ImageBackground,TextInput,TouchableOpacity,BackHandler,Alert} from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import Feather from 'react-native-vector-icons/Feather';
@@ -16,7 +16,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 
 const HomeScreen=({navigation})=>{
+    // disableBackButton=()=>{
+    //     BackHandler.e 
+    // }
 
+    
+    
+    
+        
+     
+    
 
     const[contactTab,setContactTab] =useState(1);
     const renderBanner=({item,index})=>{
@@ -26,6 +35,26 @@ const HomeScreen=({navigation})=>{
         setContactTab(value);
         
     }
+
+    const backAction = () => {
+        Alert.alert("Hold on!", "Are you sure you want to go back?", [
+          {
+            text: "Cancel",
+            onPress: () => null,
+            style: "cancel"
+          },
+          { text: "YES", onPress: () => BackHandler.exitApp() }
+        ]);
+        // return true;
+        return () => backHandler.remove();
+      };
+  
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        backAction
+      );
+  
+    
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#055E98'}}>
             <ScrollView style={{padding:20}}>
