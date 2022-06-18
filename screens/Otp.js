@@ -7,7 +7,9 @@ import database from '@react-native-firebase/database';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const OtpScreen = function ({ route: { params: mobile,name,vehicle }, navigation }) {
+// const OtpScreen = function ({ route: { params: mobile,name,vehicle }, navigation }) {
+const OtpScreen = function ({ route, navigation }) {
+  const { mobile, name,vehicle } = route.params;
   const [code, setCode] = useState('');
   const [submittingOtp, setSubmittingOtp] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,8 +27,13 @@ const OtpScreen = function ({ route: { params: mobile,name,vehicle }, navigation
   // });
  
   useEffect(() => {
-    console.log(mobile)
+    // console.log(mobile);
     signInWithPhoneNumber();
+    console.log("VALUES PASSED TO otp");
+    console.log(mobile);
+    console.log(name);
+    console.log(vehicle);
+    
     console.log("sending otp");
   }, [])
 

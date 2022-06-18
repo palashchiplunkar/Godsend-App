@@ -104,8 +104,12 @@ const nameChange =(val) =>{
 
  const GetOTP = () => {
   if(data.isValidUser==true && data.isValidNumber==true && data.mobile.length !=1) {
-    console.log(data.mobile)
-  navigation.navigate('Otp', data.mobile ,data.name,data.vehicle);
+    console.log(data.mobile);
+    console.log(data.vehicle);
+    console.log("VALUES PASSING TO otp");
+    
+
+  navigation.navigate('Otp', {mobile:data.mobile ,name:data.name,vehicle:data.vehicle});
   alert("Varification code sent to your Registerd Number");
   }
   else{
