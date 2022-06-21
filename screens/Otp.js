@@ -3,6 +3,7 @@ import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
+import { firebase } from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -14,17 +15,14 @@ const OtpScreen = function ({ route, navigation }) {
   const [submittingOtp, setSubmittingOtp] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [confirm, setConfirm] = useState(null);
-  // { number,fullName,vehileNumber }
-  // const [data, setData] = React.useState({
-  //   mobile: ' ',
-  //   name:' ',
-  //   vehicle:'',
-  //   check_textInputChange:false,
-  //   isValidNumber:true,
-  //   isValidUser:true,
-  //   isValidVehicle:true
-    
-  // });
+
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+
+      console.log('USER :',user.uid);
+}
+  });
  
   useEffect(() => {
     // console.log(mobile);
@@ -47,19 +45,19 @@ const OtpScreen = function ({ route, navigation }) {
     }
   }
 
-  async function confirmCode() {
+  async function confirmCode(user) {
     try{
      
     const response = await confirm.confirm(code);
     if(response){
       database()
-         .ref('/users')
+         .ref('/users/'+user.uid)
           .set({
            name: name,
            phone:mobile,
            vehiclenumber:vehicle
         })
-  .then(() => console.log('Data set.'));
+  .then(() => console.log('USERDATA :',user.uid));
   
       navigation.navigate('Home');
       
