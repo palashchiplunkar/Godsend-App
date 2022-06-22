@@ -45,13 +45,13 @@ const OtpScreen = function ({ route, navigation }) {
     }
   }
 
-  async function confirmCode(user) {
+  async function confirmCode() {
     try{
      
     const response = await confirm.confirm(code);
     if(response){
       database()
-         .ref('/users/'+user.uid)
+         .ref('/users/')
           .set({
            name: name,
            phone:mobile,
