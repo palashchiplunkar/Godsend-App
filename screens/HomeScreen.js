@@ -7,8 +7,6 @@ import BannerSlider from '../Components/BannerSlider';
 import {sliderData } from '../model/data';
 import {windowWidth} from '../utils/Dimensions';
 import Recentitem from '../Components/Recentitem';
-import CustomSwitch from '../Components/CustomSwitch';
-import { recentcontact } from '../model/data';
 import { contact } from '../model/data';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -16,24 +14,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 
 const HomeScreen=({navigation})=>{
-    // disableBackButton=()=>{
-    //     BackHandler.e 
-    // }
-
-    
-    
-    
-        
-     
-    
-
+ 
     const[contactTab,setContactTab] =useState(1);
     const renderBanner=({item,index})=>{
         return <BannerSlider data={item}/>;
     };
     const onSelectSwitch=(value)=>{
         setContactTab(value);
-        
+       
     }
 
     const backAction = () => {
@@ -48,37 +36,35 @@ const HomeScreen=({navigation})=>{
         // return true;
         return () => backHandler.remove();
       };
-  
+ 
       const backHandler = BackHandler.addEventListener(
         "hardwareBackPress",
         backAction
       );
-  
-    
+ 
+   
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#055E98'}}>
             <ScrollView style={{padding:20}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:5}}>
-                <Text style={{fontSize:16,fontFamily:'Robot-Medium',color:'white'}}>Hello Palash</Text>
-                <TouchableOpacity onPress={()=>navigation.openDrawer()} >
-                    <Ionicons name="menu-outline" size={22} color="white"/>
-                    {/* <MaterialIcons name="menu" fontSize={50} color="white"/> */}
-                    {/* <ImageBackground source={require('../assets/images/profileimg.png')} style={{width:35,height:35}} imageStyle={{borderRadius:25}}/> */}
-                </TouchableOpacity>
+                  <Text style={{fontSize:16,fontFamily:'Robot-Medium',color:'white'}}>Hello PALASH</Text>
+                  <TouchableOpacity onPress={()=>navigation.openDrawer()} >
+                    <Ionicons name="menu-outline" size={22} color="white"/>    
+                  </TouchableOpacity>
                
                 </View>
 
-                
+               
                 <View style={{flexDirection:'row',borderColor:'white',backgroundColor:'white',borderWidth:1,borderRadius:8,paddingHorizontal:10,paddingVertical:6}}>    
-                <Feather name='search' size={20} color='black' style={{marginRight:5,marginTop:3}}/>
-                <TextInput placeholder="Search" style={{ flex:1,paddingVertical:0}} />
-                
+                  <Feather name='search' size={20} color='black' style={{marginRight:5,marginTop:3}}/>
+                  <TextInput placeholder="Search" style={{ flex:1,paddingVertical:0}} />
+               
                 </View>
                 <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:5,marginVertical:15}}>
-                    <Text style={{fontSize:16,fontFamily:'Robot-Medium',color:'white'}}>Emergency Contacts</Text>
-                    <TouchableOpacity onPress={()=>{}}>
+                    <Text style={{fontSize:16,fontFamily:'Robot-Medium',color:'white'}}>Emergency Services Provided</Text>
+                    {/* <TouchableOpacity onPress={()=>{}}>
                         <Text style={{color:'white'}}>See All</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <Carousel
                 ref={(c) => { }}
@@ -89,18 +75,37 @@ const HomeScreen=({navigation})=>{
                 loop={true}
                 />
                 <View style={{marginVertical:20}} >
-                    <CustomSwitch selectionMode={1} option1="Recent" option2="contacts" icon1="person" icon2="phone"
-                    onSelectSwitch={onSelectSwitch}/>
+                   
+                    {/* CONTENT ADDED FROM CUSTOME SWITCH */}
+                    <View
+                    style={{
+                      height: 44,
+                      width: '100%',
+                      flex: 1,
+                      flexDirection:'row',
+                      backgroundColor:'#AD40AF',
+                      borderRadius: 10,
+                      borderColor: '#AD40AF',
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      // marginLeft:50
+                     
+                      }}>
+                        <MaterialIcons name="person" size={22} color='white' style={{marginRight:5}}/>
+                        <Text
+                          style={{color:  'white' ,
+                          fontSize: 20,
+                          fontFamily: 'Roboto-Medium',
+}}>Emergency Contact List</Text>
+                     
+                    </View>
+                   
                 </View>
-                {contactTab==1 && recentcontact.map(item=>(
-                    <Recentitem key={item.id} profile={item.profile} name={item.name} number={item.number}/>
-                )) }
-                {/* <Text>Recent</Text> */}
-                {/* <Recentitem/> */}
-                {contactTab==2 && contact.map(item=>(
+                {contact.map(item=>(
                     <Recentitem key={item.id} profile={item.profile} name={item.name} number={item.number}/>
                 ))}
-                
+               
             </ScrollView>
         </SafeAreaView>
     )
@@ -108,5 +113,3 @@ const HomeScreen=({navigation})=>{
 };
 
 export default HomeScreen;
-
-

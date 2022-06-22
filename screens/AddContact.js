@@ -6,8 +6,8 @@ import BannerSlider from '../Components/BannerSlider';
 import {sliderData } from '../model/data';
 import {windowWidth} from '../utils/Dimensions';
 import Recentitem from '../Components/Recentitem';
-import CustomSwitch from '../Components/CustomSwitch';
-import { recentcontact } from '../model/data';
+
+
 import { contact } from '../model/data';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
