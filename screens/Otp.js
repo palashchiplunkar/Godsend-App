@@ -1,135 +1,140 @@
 import React from 'react';
-import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet,StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
-import { firebase } from '@react-native-firebase/auth';
+import {firebase} from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import {useState} from 'react';
+import {useEffect} from 'react';
 
 // const OtpScreen = function ({ route: { params: mobile,name,vehicle }, navigation }) {
-const OtpScreen = function ({ route, navigation }) {
-  const { mobile, name,vehicle } = route.params;
+const OtpScreen = function ({route, navigation}) {
+  const {mobile, name, vehicle} = route.params;
   const [code, setCode] = useState('');
   const [submittingOtp, setSubmittingOtp] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [confirm, setConfirm] = useState(null);
 
-
-  firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged(user => {
     if (user) {
-
-      console.log('USER :',user.uid);
-}
+      console.log('USER :', user.uid);
+    }
   });
- 
+
   useEffect(() => {
     // console.log(mobile);
     signInWithPhoneNumber();
-    console.log("VALUES PASSED TO otp");
+    console.log('VALUES PASSED TO otp');
     console.log(mobile);
     console.log(name);
     console.log(vehicle);
-    
-    console.log("sending otp");
-  }, [])
+
+    console.log('sending otp');
+  }, []);
 
   async function signInWithPhoneNumber() {
-    try{
-       const confirmation = await auth().signInWithPhoneNumber('+91'+mobile);
-       setConfirm(confirmation);
-       console.log(confirmation);
-     }catch(e){
-       console.log(e);
+    try {
+      const confirmation = await auth().signInWithPhoneNumber('+91' + mobile);
+      setConfirm(confirmation);
+      console.log(confirmation);
+    } catch (e) {
+      console.log(e);
     }
   }
 
   async function confirmCode() {
-    try{
-     
-    const response = await confirm.confirm(code);
-    if(response){
-      database()
-         .ref('/users/')
+    try {
+      const response = await confirm.confirm(code);
+      if (response) {
+        database()
+          .ref('/users/')
           .set({
-           name: name,
-           phone:mobile,
-           vehiclenumber:vehicle
-        })
-  .then(() => console.log('USERDATA :',user.uid));
-  
-      navigation.navigate('Home');
-      
-    }} catch(e){
+            name: name,
+            phone: mobile,
+            vehiclenumber: vehicle,
+          })
+          .then(() => console.log('USERDATA :', user.uid));
+
+        navigation.navigate('Home');
+      }
+    } catch (e) {
       console.log(e);
     }
   }
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor='black' barstyle='light-content'/>
-        <View style={{marginHorizontal:25}}>
-      
-        <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30}}>Enter the OTP sent to your{' ' + mobile}</Text>
+      <StatusBar backgroundColor="black" barstyle="light-content" />
+      <View style={{marginHorizontal: 25}}>
+        <Text
+          style={{
+            fontSize: 28,
+            fontWeight: '500',
+            color: 'white',
+            marginBottom: 30,
+          }}>
+          Enter the OTP sent to your{' ' + mobile}
+        </Text>
         <TextInput
           style={{
-              marginBottom: 20, color: '#fff', width: '100%',
-              borderBottomColor: '#f8f8f8', borderBottomWidth: 1,
+            marginBottom: 20,
+            color: '#fff',
+            width: '100%',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 1,
           }}
-          placeholder='Enter 6 digit OTP'
-          placeholderTextColor="#fff" underlineColorAndroid={'transparent'}
+          placeholder="Enter 6 digit OTP"
+          placeholderTextColor="#fff"
+          underlineColorAndroid={'transparent'}
           keyboardType="number-pad"
           value={code}
-         onChangeText={value => setCode(value)}  
-         maxLength={6}
-      />
-        <TouchableOpacity 
-        //  onPress={()=>navigation.navigate('Home')}
-        // onPress={confirmCode}
-      onPress={() => confirmCode()}
-        style={styles.submitbutton}>
-        <Text style={styles.submit}>Submit</Text>
-        {/* <CustomIcon name='' size={25} />  */}
-        <MaterialsIcons name="login" size={25} color="#fff"/>
+          onChangeText={value => setCode(value)}
+          maxLength={6}
+        />
+        <TouchableOpacity
+          //  onPress={()=>navigation.navigate('Home')}
+          
+          onPress={() => confirmCode()}
+          style={styles.submitbutton}>
+          <Text style={styles.submit}>Submit</Text>
+          {/* <CustomIcon name='' size={25} />  */}
+          <MaterialsIcons name="login" size={25} color="#fff" />
         </TouchableOpacity>
-  
-        
-
-
-        </View>
+      </View>
     </SafeAreaView>
   );
-  
-}
+};
 
 export default OtpScreen;
 
 const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      justifyContent:'center',
-      backgroundColor:'#055E98'
-    },
-    submitbutton:{
-      backgroundColor:'#ff3300',
-      width:'90%',
-      padding:20,
-      borderRadius:5,
-      flexDirection:'row',
-      justifyContent:'space-between',
-      marginBottom:50
-      },
-      submit:{  
-        fontWeight:'bold',
-        fontSize:15,
-        color:'#fff',
-        fontFamily:'Tapestry-Regular'
-    
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#055E98',
   },
-  });
-
-  
-  
- 
-  
-  
+  submitbutton: {
+    backgroundColor: '#ff3300',
+    width: '90%',
+    padding: 20,
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 50,
+  },
+  submit: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#fff',
+    fontFamily: 'Tapestry-Regular',
+  },
+});
