@@ -1,5 +1,5 @@
 import React ,{useState}from 'react';
-import {View,Text,SafeAreaView,ScrollView,ImageBackground,TextInput,TouchableOpacity,BackHandler,Alert} from 'react-native';
+import {View,Text,SafeAreaView,ScrollView,ImageBackground,TextInput,TouchableOpacity,BackHandler,Alert,StatusBar} from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import Feather from 'react-native-vector-icons/Feather';
@@ -45,6 +45,7 @@ const HomeScreen=({navigation})=>{
    
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#055E98'}}>
+          <StatusBar backgroundColor='black' barstyle='light-content'/>
             <ScrollView style={{padding:20}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:5}}>
                   <Text style={{fontSize:16,fontFamily:'Robot-Medium',color:'white'}}>Hello PALASH</Text>

@@ -8,12 +8,13 @@ import * as Animatable from 'react-native-animatable';
 //import OtpScreen from './screens/Otp'
 // import HomeScreen from './screens/HomeScreen';
 
-import {SafeAreaView,Text,View,Image,StyleSheet, TouchableOpacity,Dimensions} from 'react-native';
+import {SafeAreaView,Text,View,Image,StyleSheet, TouchableOpacity,Dimensions,StatusBar} from 'react-native';
 
 
 const OnboardingScreen=({navigation})=> {
     return (
       <SafeAreaView style={styles.maincontainer}>
+        <StatusBar backgroundColor='black' barstyle='light-content'/>
         
         <View style={styles.header}>
             {/* <Animatable.Image 

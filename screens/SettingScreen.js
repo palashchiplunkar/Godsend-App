@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 const SettingScreen=({navigation})=>{
     return (
         <SafeAreaView style={{flex:1,backgroundColor:'#055E98'}}>
+        <StatusBar backgroundColor='black' barstyle='light-content'/>
         <ScrollView style={{padding:20}}>
             
             <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:5}}>

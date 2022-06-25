@@ -231,6 +231,7 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent:'center',
     backgroundColor:'#055E98'
+    //backgroundColor:'black'
   },
   image:{width:225,
     height:225,

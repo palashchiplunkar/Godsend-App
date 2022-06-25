@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet} from 'react-native';
+import {View,Text,Image,TouchableOpacity,TextInput,SafeAreaView,StyleSheet,StatusBar} from 'react-native';
 import MaterialsIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
@@ -67,6 +67,7 @@ const OtpScreen = function ({ route, navigation }) {
   }
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor='black' barstyle='light-content'/>
         <View style={{marginHorizontal:25}}>
       
         <Text style={{fontSize:28,fontWeight:'500',color:'white',marginBottom:30}}>Enter the OTP sent to your{' ' + mobile}</Text>
