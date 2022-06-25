@@ -102,7 +102,7 @@ const OtpScreen = function ({route, navigation}) {
         />
         <TouchableOpacity
           //  onPress={()=>navigation.navigate('Home')}
-          
+
           onPress={() => confirmCode()}
           style={styles.submitbutton}>
           <Text style={styles.submit}>Submit</Text>
