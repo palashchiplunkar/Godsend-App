@@ -101,9 +101,9 @@ const OtpScreen = function ({route, navigation}) {
           maxLength={6}
         />
         <TouchableOpacity
-          //  onPress={()=>navigation.navigate('Home')}
+           onPress={()=>navigation.navigate('Home')}
 
-          onPress={() => confirmCode()}
+          // onPress={() => confirmCode()}
           style={styles.submitbutton}>
           <Text style={styles.submit}>Submit</Text>
           {/* <CustomIcon name='' size={25} />  */}

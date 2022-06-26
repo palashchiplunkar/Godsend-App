@@ -9,6 +9,7 @@ import MomentsScreen from '../screens/MomentsScreen';
 import SettingScreen from '../screens/SettingScreen';
 import AddContactScreen from '../screens/AddContact';
 import CustomDrawer from '../Components/CustomDrawer';
+import ProfileStack from './profileStack';
 const Drawer = createDrawerNavigator();
 
 const HomeStack = () => {
@@ -43,7 +44,8 @@ const HomeStack = () => {
 
       <Drawer.Screen
         name="Profile"
-        component={ProfileScreen}
+        // component={ProfileScreen}
+        component={ProfileStack}
         options={{
           drawerIcon: ({color}) => (
             <Ionicons name="person-outline" size={22} color={color} />

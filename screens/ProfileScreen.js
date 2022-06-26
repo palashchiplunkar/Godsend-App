@@ -53,31 +53,66 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.userInfoSection}>
           <View style={styles.row}>
             <Icon name="map-marker-radius" size={20} color="#777777" />
-            <Text style={{color:'white',marginLeft:20}}>Mangalore,India</Text>
+            <Text style={{color: 'white', marginLeft: 20}}>
+              Mangalore,India
+            </Text>
           </View>
           <View style={styles.row}>
             <Icon name="phone" size={20} color="#777777" />
-            <Text style={{color:'white',marginLeft:20}}>+91-6361134190</Text>
+            <Text style={{color: 'white', marginLeft: 20}}>+91-6361134190</Text>
           </View>
           <View style={styles.row}>
             <Icon name="email" size={20} color="#777777" />
-            <Text style={{color:'white',marginLeft:20}}>madhu_moger4@gmail.com</Text>
+            <Text style={{color: 'white', marginLeft: 20}}>
+              madhu_moger4@gmail.com
+            </Text>
           </View>
-          
         </View>
         <View style={styles.infoBoxWrapper}>
-          <View style={[styles.infoBox,{ borderRightColor:'white',
-    borderRightWidth:1}]}>
+          <View
+            style={[
+              styles.infoBox,
+              {borderRightColor: 'white', borderRightWidth: 1},
+            ]}>
             <Title style={{color: 'white'}}>Male</Title>
             <Caption style={{color: 'white'}}>Sex</Caption>
-
           </View>
           <View style={styles.infoBox}>
-            <Title style={{color: 'white'}}>40</Title>
+            <Title style={{color: 'white'}}>20</Title>
             <Caption style={{color: 'white'}}>Age</Caption>
-
           </View>
-
+        </View>
+        <View style={styles.menuWrapper}>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="heart-outline" color="#FF6347" size={25} />
+              <Text style={styles.menuItemText}>Your Favourite</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="credit-card" color="#FF6347" size={25} />
+              <Text style={styles.menuItemText}>Payment</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="share-outline" color="#FF6347" size={25} />
+              <Text style={styles.menuItemText}> Tell Your Friend</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="account-check-outline" color="#FF6347" size={25} />
+              <Text style={styles.menuItemText}>Support</Text>
+            </View>
+          </TouchableRipple>
+          {/* <TouchableRipple onPress={()=>{}}>
+            <View style={styles.menuItem}>
+              <Icon name="settings-outline" color="#FF6347" size={25} />
+              <Text style={styles.menuItemText}>Setting</Text>
+            </View>
+          </TouchableRipple> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -133,7 +168,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
-   
   },
   menuWrapper: {
     marginTop: 10,
