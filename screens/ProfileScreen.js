@@ -44,6 +44,7 @@ const ProfileScreen = ({navigation}) => {
               style={{width: 80, height: 80, marginBottom: 10}}
               imageStyle={{borderRadius: 40}}
             />
+
             <View style={{marginLeft: 20}}>
               <Title style={styles.title}>Madhu Moger</Title>
               <Caption style={styles.caption}>madhu_moger</Caption>
@@ -52,17 +53,17 @@ const ProfileScreen = ({navigation}) => {
         </View>
         <View style={styles.userInfoSection}>
           <View style={styles.row}>
-            <Icon name="map-marker-radius" size={20} color="#777777" />
+            <Icon name="map-marker-radius" size={20} color="#FF6347" />
             <Text style={{color: 'white', marginLeft: 20}}>
               Mangalore,India
             </Text>
           </View>
           <View style={styles.row}>
-            <Icon name="phone" size={20} color="#777777" />
+            <Icon name="phone" size={20} color="#FF6347" />
             <Text style={{color: 'white', marginLeft: 20}}>+91-6361134190</Text>
           </View>
           <View style={styles.row}>
-            <Icon name="email" size={20} color="#777777" />
+            <Icon name="email" size={20} color="#FF6347" />
             <Text style={{color: 'white', marginLeft: 20}}>
               madhu_moger4@gmail.com
             </Text>
@@ -83,36 +84,26 @@ const ProfileScreen = ({navigation}) => {
           </View>
         </View>
         <View style={styles.menuWrapper}>
-          <TouchableRipple onPress={() => {}}>
+          <TouchableRipple onPress={() => navigation.navigate('Editprofile')}>
             <View style={styles.menuItem}>
-              <Icon name="heart-outline" color="#FF6347" size={25} />
-              <Text style={styles.menuItemText}>Your Favourite</Text>
+              <Icon name="account-check-outline" color="#FF6347" size={25} />
+              <Text style={styles.menuItemText}>Edit Profile</Text>
             </View>
           </TouchableRipple>
-          <TouchableRipple onPress={() => {}}>
-            <View style={styles.menuItem}>
-              <Icon name="credit-card" color="#FF6347" size={25} />
-              <Text style={styles.menuItemText}>Payment</Text>
-            </View>
-          </TouchableRipple>
+
           <TouchableRipple onPress={() => {}}>
             <View style={styles.menuItem}>
               <Icon name="share-outline" color="#FF6347" size={25} />
               <Text style={styles.menuItemText}> Tell Your Friend</Text>
             </View>
           </TouchableRipple>
-          <TouchableRipple onPress={() => {}}>
+
+          <TouchableRipple onPress={() => navigation.navigate('Setting')}>
             <View style={styles.menuItem}>
-              <Icon name="account-check-outline" color="#FF6347" size={25} />
-              <Text style={styles.menuItemText}>Support</Text>
-            </View>
-          </TouchableRipple>
-          {/* <TouchableRipple onPress={()=>{}}>
-            <View style={styles.menuItem}>
-              <Icon name="settings-outline" color="#FF6347" size={25} />
+              <Icon name="cog-outline" color="#FF6347" size={25} />
               <Text style={styles.menuItemText}>Setting</Text>
             </View>
-          </TouchableRipple> */}
+          </TouchableRipple>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -178,7 +169,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   menuItemText: {
-    color: '#777777',
+    color: 'white',
     marginLeft: 20,
     fontWeight: '600',
     fontSize: 16,
