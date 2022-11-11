@@ -64,10 +64,7 @@ const LoginScreen = ({navigation}) => {
     }
   };
 
-  //junaid s code
-  // const[number,setNumber]=useState('');
-  // const[fullName,setFullName]=useState('');
-  //  const [mydata,setMyData]=useState(null);
+ 
   useEffect(() => {
     getDatabase();
   }, []);
@@ -104,14 +101,7 @@ const LoginScreen = ({navigation}) => {
     }
   };
 
-  //junaids code
-  //  const GetOTP = () => {
-  //   if(number && number.length > 9){
-  //   navigation.navigate('Otp', {number});
-  //   }
-  //   else
-  //   alert("Please enter 10 digit phone number");
-  // }
+ 
   return (
     <SafeAreaView style={styles.container}>
       <View style={{marginHorizontal: 25}}>
@@ -163,8 +153,7 @@ const LoginScreen = ({navigation}) => {
               style={{flex: 1, paddingVertical: 0}}
               keyboardType="default"
               onChangeText={val => nameChange(val)}
-              // value={fullName}
-              // onChangeText={value => setFullName(value) }
+              
             />
           </View>
           {data.isValidUser ? null : (
@@ -228,10 +217,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 3,
     paddingBottom: 3,
-    //borderBottomColor:'#ccc',
-    // borderBottomWidth:1,
-    // backgroundColor:'white',
-    // marginBottom:20
+   
   },
   textinput1: {
     paddingLeft: 3,
@@ -244,7 +230,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     backgroundColor: 'white',
-    // paddingBottom: 5
+    
   },
   login: {textAlign: 'center', fontWeight: '500', fontSize: 16, color: 'white'},
   gicon: {
@@ -264,11 +250,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   Registerbutton: {
-    //backgroundColor:'#AD48AF',
-    //padding:20,
-    //borderRadius:10,
+    
     marginLeft: 10,
-    //paddingHorizontal:50,
+    
     marginBottom: 20,
   },
   signup: {
@@ -287,9 +271,6 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     color: 'red',
     fontSize: 14,
-    // marginTop:10,
-    // marginBottom:5,
-    // borderWidth:2,
-    // borderColor:'red'
+   
   },
 });
